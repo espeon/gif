@@ -8,6 +8,6 @@ a small random gif api
 
     (hint: there's an export dropdown on the top bar)
 
-3. put the database url in env like this: (DB_URL:postgres://postgres:password@69.69.69.69:5432/postgres?synchronize=true)
+3. put the database url in env like this: (DB_URL:postgres://postgres:password@69.69.69.69:5432/postgres)
 
 4. run using `cargo run`
