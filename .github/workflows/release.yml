@@ -99,4 +99,4 @@ jobs:
           username: notkanbaru
           password: "${{ secrets.GITHUB_TOKEN }}"  # you don't need to manually set this secret. GitHub does it on your behalf
           registry: docker.pkg.github.com
-          image_name: maki
+          image_name: gif
