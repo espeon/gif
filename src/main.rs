@@ -11,6 +11,10 @@ use serde;
 use serde::{Deserialize, Serialize};
 use sqlx::postgres::{PgPool, PgPoolOptions};
 
+
+use chrono::Local;
+use chrono_humanize::HumanTime;
+
 use rustflake::Snowflake;
 
 #[derive(Deserialize, Serialize, Debug)]
@@ -67,7 +71,11 @@ async fn main() -> anyhow::Result<()> {
 
 async fn sleepy(seconds: u8) -> Result<impl warp::Reply, Infallible> {
     tokio::time::delay_for(Duration::from_secs(seconds.into())).await;
-    Ok(format!("I waited {} seconds!", seconds))
+
+let dt = Local::now() - chrono::Duration::minutes(seconds as i64);
+let ht = HumanTime::from(dt);
+
+    Ok(format!("I waited {} seconds!", ht))
 }
 
 pub async fn get_pool() -> anyhow::Result<PgPool, anyhow::Error> {
